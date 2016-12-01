@@ -12,7 +12,8 @@ router.post('/', passport, (request, response, next) => {
     var token = jwt.sign({
         username: account.username,
         profile: account.profile,
-        roles: account.roles
+        roles: account.roles,
+        stores: account.stores
     }, process.env.AUTH_SECRET);
 
     var result = resultFormatter.ok(apiVersion, 200, token);
