@@ -13,7 +13,7 @@ router.post('/', passport, (request, response, next) => {
         username: account.username,
         profile: account.profile,
         roles: account.roles,
-        stores: account.stores.map((store) => { return { _id: store._id, code: store.code, name: store._name }; })
+        stores: account.stores.map((store) => { return { _id: store._id, code: store.code, name: store.name, shifts:store.shifts, salesTarget:store.salesTarget, salesCapital:store.salesCapital }; })
     }, process.env.AUTH_SECRET);
 
     var result = resultFormatter.ok(apiVersion, 200, token);
