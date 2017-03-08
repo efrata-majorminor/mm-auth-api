@@ -7,13 +7,39 @@ var passport = require('../../passports/local-passport');
 
 router.post('/', passport, (request, response, next) => {
     var account = request.user;
+    var permissionMap = account.roles.map((role) => {
+        return role.permissions.reduce((map, permission, index) => {
+            var key = permission.unit.code;
+            if (!map.has(key))
+                map.set(key, 0);
+            var mod = map.get(key);
+            mod = mod | permission.permission;
+            map.set(key, mod);
 
+            return map;
+        }, new Map());
+    }).reduce((map, curr, index) => {
+        curr.forEach((value, key) => {
+            if (!map.has(key))
+                map.set(key, 0);
+            var mod = map.get(key);
+            mod = mod | value;
+            map.set(key, mod);
+        });
+        return map;
+    }, new Map());
+
+    var permission = {};
+    permissionMap.forEach((value, key) => {
+        permission[key] = value;
+    });
     var jwt = require("jsonwebtoken");
     var token = jwt.sign({
         username: account.username,
         profile: account.profile,
         roles: account.roles,
-        stores: account.stores.map((store) => { return { _id: store._id, code: store.code, name: store.name, shifts:store.shifts, salesTarget:store.salesTarget, salesCapital:store.salesCapital }; })
+        stores: account.stores.map((store) => { return { _id: store._id, code: store.code, name: store.name, shifts: store.shifts, salesTarget: store.salesTarget, salesCapital: store.salesCapital }; }),
+        permission: permission
     }, process.env.AUTH_SECRET);
 
     var result = resultFormatter.ok(apiVersion, 200, token);
