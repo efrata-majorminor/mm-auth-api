@@ -37,7 +37,7 @@ router.post('/', passport, (request, response, next) => {
     var token = jwt.sign({
         username: account.username,
         profile: account.profile,
-        roles: account.roles,
+        // roles: account.roles,
         stores: account.stores.map((store) => { return { _id: store._id, code: store.code, name: store.name, shifts: store.shifts, salesTarget: store.salesTarget, salesCapital: store.salesCapital }; }),
         permission: permission
     }, process.env.AUTH_SECRET);
