@@ -17,7 +17,9 @@
   },
   "homepage": "https://github.com/danliris/bateeq-auth-api#readme",
   "dependencies": {
+
     "bateeq-module": "git+https://github.com/danliris/bateeq-module.git",
+
     "jsonwebtoken": "^7.1.9",
     "mongo-factory": "^1.0.0",
     "mongodb": "^2.2.6",
