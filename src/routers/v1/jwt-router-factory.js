@@ -1,22 +1,9 @@
-const Manager = require('bateeq-module').auth.RoleManager;
-const apiVersion = '1.0.0';
-
-function getRouter() {
-    var roleRouter = roleJwtRouter(Manager, {
-        version: apiVersion,
-        defaultOrder: {
-            "_createdDate": 1
-        }
-    });
-    return roleRouter;
-}
-
 var Router = require("restify-router").Router;
 var db = require("../../db");
 var resultFormatter = require("../../result-formatter");
 var passport = require("../../passports/jwt-passport");
 
-function roleJwtRouter(ManagerType, opts) {
+function getJWTRouter(ManagerType, opts) {
 
     var options = opts || {
         version: "1.0.0"
@@ -40,7 +27,9 @@ function roleJwtRouter(ManagerType, opts) {
         var user = request.user;
         var query = request.query;
 
-        query.filter = !query.filter ? {} : JSON.parse(query.filter);
+        query.filter = Object.assign({}, query.filter, typeof defaultFilter === "function" ? defaultFilter(request, response, next) : defaultFilter, query.filter);
+        query.order = Object.assign({}, query.order, typeof defaultOrder === "function" ? defaultOrder(request, response, next) : defaultOrder, query.order);
+        query.select = query.select ? query.select : typeof defaultSelect === "function" ? defaultSelect(request, response, next) : defaultSelect;
 
         getManager(user)
             .then((manager) => {
@@ -193,5 +182,4 @@ function roleJwtRouter(ManagerType, opts) {
 
     return router;
 }
-
-module.exports = getRouter;
+module.exports = getJWTRouter;
