@@ -1,2 +1,2 @@
-# bateeq-auth-api
-Bateeq authentication api
+# mm-auth-api
+Major Minor authentication api
