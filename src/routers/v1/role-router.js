@@ -1,4 +1,4 @@
-const Manager = require('bateeq-module').auth.RoleManager;
+const Manager = require('mm-module').auth.RoleManager;
 const apiVersion = '1.0.0';
 
 function getRouter() {

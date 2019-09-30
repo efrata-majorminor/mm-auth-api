@@ -1,7 +1,7 @@
 const apiVersion = '1.0.0';
 var Router = require('restify-router').Router;
 var router = new Router();
-var AccountManager = require('bateeq-module').auth.AccountManager;
+var AccountManager = require('mm-module').auth.AccountManager;
 var db = require('../../db');
 var resultFormatter = require("../../result-formatter");
 

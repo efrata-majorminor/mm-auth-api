@@ -1,4 +1,4 @@
-const Manager = require('bateeq-module').auth.AccountManager;
+const Manager = require('mm-module').auth.AccountManager;
 const JwtRouterFactory = require('./jwt-router-factory');
 const apiVersion = '1.0.0';
 

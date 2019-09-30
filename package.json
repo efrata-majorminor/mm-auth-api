@@ -1,25 +1,23 @@
 {
-  "name": "bateeq-auth-api",
+  "name": "mm-auth-api",
   "version": "1.0.0",
-  "description": "Bateeq authentication Api",
+  "description": "Major Minor authentication Api",
   "main": "server.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/danliris/bateeq-auth-api.git"
+    "url": "git+https://github.com/efrata-majorminor/mm-auth-api.git"
   },
   "author": "Moonlay Technologies",
   "license": "MIT",
   "bugs": {
-    "url": "https://github.com/danliris/bateeq-auth-api/issues"
+    "url": "https://github.com/efrata-majorminor/mm-auth-api/issues"
   },
-  "homepage": "https://github.com/danliris/bateeq-auth-api#readme",
+  "homepage": "https://github.com/efrata-majorminor/mm-auth-api#readme",
   "dependencies": {
-
-    "bateeq-module": "git+https://github.com/danliris/bateeq-module.git",
-
+    "mm-module": "git+https://github.com/efrata-majorminor/mm-module.git",
     "jsonwebtoken": "^7.1.9",
     "mongo-factory": "^1.0.0",
     "mongodb": "^2.2.6",
