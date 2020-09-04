@@ -20,7 +20,7 @@
     "mm-module": "git+https://github.com/efrata-majorminor/mm-module.git",
     "jsonwebtoken": "^7.1.9",
     "mongo-factory": "^1.0.0",
-    "mongodb": "^2.2.6",
+    "mongodb": "^3.6.1",
     "passport": "^0.3.2",
     "passport-jwt": "^2.1.0",
     "passport-local": "^1.0.0",
